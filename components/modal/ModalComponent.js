@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from "react";
 import Modal from 'react-bootstrap/Modal';
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { requestUpdateSmart } from "../../src/redux/updateButton/updateActions";
 import style from '../modal/modalComponent.module.scss';
 
 const ModalComponent = (props) => {
+
+    const state=useSelector(state=>state.updateReducer);
+
+    const dispatch=useDispatch();
 
     const {
         openModal,
@@ -11,6 +16,14 @@ const ModalComponent = (props) => {
         floor_index,
         line_index
     } = props;
+
+    const updateButton=(floor_id)=>{
+
+        dispatch(requestUpdateSmart(floor_index,floor_id));
+
+    }
+    
+
 
     const buttons = useSelector(state => state.sidexReducer.buttons)
 
@@ -37,7 +50,9 @@ const ModalComponent = (props) => {
                         {
                             button.map((value, key) => {
                                 return (
-                                    <span className={style.buttonFloor}>
+                                    <span
+                                    onClick={()=>updateButton(value.floor_id)}
+                                    className={style.buttonFloor}>
                                         {value.floor_name}
                                     </span>
                                 )

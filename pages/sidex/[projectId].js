@@ -19,6 +19,7 @@ const Index = () => {
 
     useEffect(() => {
 
+      
         if (!localStorage.getItem('token')) {
             router.push('/login')
         }
