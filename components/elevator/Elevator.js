@@ -21,8 +21,6 @@ const Elevator = ({ line, ChangeLine, lineColumn,ClickSettingFllorHandler }) => 
         zIndex: 50,
     };
 
-
-
     return (
         <>
             {/* col-xl-3 col-lg-4 col-md-6 col-sm-12 */}
@@ -114,7 +112,7 @@ const Elevator = ({ line, ChangeLine, lineColumn,ClickSettingFllorHandler }) => 
                                 return (
                                     <Fragment key={key + lineColumn}>
                                         <Floor
-                                        line_index={line.line_index}
+                                        line_index={line.line_id}
                                          floor={value}
                                           ClickSettingFllorHandler={ClickSettingFllorHandler} />
                                     </Fragment>

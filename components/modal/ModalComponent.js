@@ -6,9 +6,9 @@ import style from '../modal/modalComponent.module.scss';
 
 const ModalComponent = (props) => {
 
-    const state=useSelector(state=>state.updateReducer);
+    const state = useSelector(state => state.updateReducer);
 
-    const dispatch=useDispatch();
+    const dispatch = useDispatch();
 
     const {
         openModal,
@@ -17,19 +17,19 @@ const ModalComponent = (props) => {
         line_index
     } = props;
 
-    const updateButton=(floor_id)=>{
+    const updateButton = (floor_id) => {
 
-        dispatch(requestUpdateSmart(floor_index,floor_id));
-
+        dispatch(requestUpdateSmart(floor_index, floor_id,line_index));
     }
-    
-
 
     const buttons = useSelector(state => state.sidexReducer.buttons)
+
+    // console.log(buttons);
 
     const [button, setButton] = useState([])
 
     useEffect(() => {
+        console.log(line_index);
 
         if (floor_index != null && line_index != null) {
             console.log(buttons[line_index].buttons_floors)
@@ -51,8 +51,8 @@ const ModalComponent = (props) => {
                             button.map((value, key) => {
                                 return (
                                     <span
-                                    onClick={()=>updateButton(value.floor_id)}
-                                    className={style.buttonFloor}>
+                                        onClick={() => updateButton(value.floor_id)}
+                                        className={style.buttonFloor}>
                                         {value.floor_name}
                                     </span>
                                 )

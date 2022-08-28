@@ -4,6 +4,7 @@ import style from '../Sidex/sidex.module.scss';
 
 
 const Floor = ({floor,ClickSettingFllorHandler,line_index}) => {
+    // console.log(line_index)
 
     return (
         <div className={`${style.box} d-flex`}>
